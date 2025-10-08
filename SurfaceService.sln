@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurfaceServiceServer", "SurfaceServiceServer\SurfaceServiceServer.csproj", "{8925F553-57B0-443B-A732-50305F06294C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8925F553-57B0-443B-A732-50305F06294C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8925F553-57B0-443B-A732-50305F06294C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8925F553-57B0-443B-A732-50305F06294C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8925F553-57B0-443B-A732-50305F06294C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {30AF9351-E0F4-4B7F-A177-DD68E75B9748}
+	EndGlobalSection
+EndGlobal
