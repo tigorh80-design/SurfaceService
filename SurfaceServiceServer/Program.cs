@@ -12,7 +12,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Your API Name V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Surface Service V1");
 });
 
 app.UseHttpsRedirection();
