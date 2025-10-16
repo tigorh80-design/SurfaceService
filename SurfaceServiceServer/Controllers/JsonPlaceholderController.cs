@@ -17,7 +17,7 @@ namespace SurfaceServiceServer.Controllers
             _forumPostService = forumPostService;
         }
 
-        [HttpPost("forumPosts")]
+        [HttpGet("forumPosts")]
         public async Task<List<ForumPost>> GetProductsAsync()
         {
             var forumPosts = await _forumPostService.GetForumPostsAsync();
