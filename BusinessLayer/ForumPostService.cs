@@ -19,10 +19,19 @@ namespace BusinessLayer
             var client = _httpClientFactory.CreateClient("JSONPlaceholder");
             var response = await client.GetAsync("posts");
             response.EnsureSuccessStatusCode();
-            //return await response.Content.ReadAsStringAsync();
             var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPost>>();
 
-            return forumPosts;
+            return forumPosts ?? new List<ForumPost>();
+        }
+
+        public async Task<List<ForumPost>> GetForumPostsByUserAsync(int userId)
+        {
+            var client = _httpClientFactory.CreateClient("JSONPlaceholder");
+            var response = await client.GetAsync($"users/{userId}/posts");
+            response.EnsureSuccessStatusCode();
+            var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPost>>();
+
+            return forumPosts ?? new List<ForumPost>();
         }
     }
 }

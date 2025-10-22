@@ -16,13 +16,30 @@ namespace SurfaceServiceServer.Controllers
             _logger = logger;
             _forumPostService = forumPostService;
         }
-
+        /// <summary>
+        /// Get all forum posts
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("forumPosts")]
-        public async Task<List<ForumPost>> GetProductsAsync()
+        public async Task<List<ForumPost>> GetForumPostsAsync()
         {
             var forumPosts = await _forumPostService.GetForumPostsAsync();
 
             return forumPosts;
         }
+
+        /// <summary>
+        /// Get forum posts by user id  
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("forumPosts/users/{userId}")]
+        public async Task<List<ForumPost>> GetForumPostsByUserAsync(int userId)
+        {
+            var forumPosts = await _forumPostService.GetForumPostsByUserAsync(userId);
+
+            return forumPosts;
+        }
+
     }
 }
