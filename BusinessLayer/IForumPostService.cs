@@ -5,7 +5,8 @@ namespace BusinessLayer
 {
     public interface IForumPostService
     {
-        Task<List<ForumPost>> GetForumPostsAsync();
-        Task<List<ForumPost>> GetForumPostsByUserAsync(int userId);
+        Task<List<ForumPostResponse>> GetForumPostsAsync();
+        Task<List<ForumPostResponse>> GetForumPostsByUserAsync(int userId);
+        Task<ForumPostResponse> CreateForumPostAsync(ForumPostRequest forumPostRequest);
     }
 }

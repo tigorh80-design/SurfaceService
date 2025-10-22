@@ -21,7 +21,7 @@ namespace SurfaceServiceServer.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("forumPosts")]
-        public async Task<List<ForumPost>> GetForumPostsAsync()
+        public async Task<List<ForumPostResponse>> GetForumPostsAsync()
         {
             var forumPosts = await _forumPostService.GetForumPostsAsync();
 
@@ -34,11 +34,24 @@ namespace SurfaceServiceServer.Controllers
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpGet("forumPosts/users/{userId}")]
-        public async Task<List<ForumPost>> GetForumPostsByUserAsync(int userId)
+        public async Task<List<ForumPostResponse>> GetForumPostsByUserAsync(int userId)
         {
             var forumPosts = await _forumPostService.GetForumPostsByUserAsync(userId);
 
             return forumPosts;
+        }
+
+        /// <summary>
+        /// Create a new forum post
+        /// </summary>
+        /// <param name="forumPostRequest"></param>
+        /// <returns></returns>
+        [HttpPost("createForumPost")]
+        public async Task<ForumPostResponse> CreateForumPostAsync([FromBody] ForumPostRequest forumPostRequest)
+        {
+            var forumPost = await _forumPostService.CreateForumPostAsync(forumPostRequest);
+
+            return forumPost;
         }
 
     }

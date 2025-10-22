@@ -14,24 +14,35 @@ namespace BusinessLayer
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<List<ForumPost>> GetForumPostsAsync()
+        public async Task<List<ForumPostResponse>> GetForumPostsAsync()
         {
             var client = _httpClientFactory.CreateClient("JSONPlaceholder");
             var response = await client.GetAsync("posts");
             response.EnsureSuccessStatusCode();
-            var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPost>>();
+            var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPostResponse>>();
 
-            return forumPosts ?? new List<ForumPost>();
+            return forumPosts ?? new List<ForumPostResponse>();
         }
 
-        public async Task<List<ForumPost>> GetForumPostsByUserAsync(int userId)
+        public async Task<List<ForumPostResponse>> GetForumPostsByUserAsync(int userId)
         {
             var client = _httpClientFactory.CreateClient("JSONPlaceholder");
             var response = await client.GetAsync($"users/{userId}/posts");
             response.EnsureSuccessStatusCode();
-            var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPost>>();
+            var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPostResponse>>();
 
-            return forumPosts ?? new List<ForumPost>();
+            return forumPosts ?? new List<ForumPostResponse>();
+        }
+
+        public async Task<ForumPostResponse> CreateForumPostAsync(ForumPostRequest forumPostRequest)
+        {
+            var client = _httpClientFactory.CreateClient("JSONPlaceholder");
+
+            var response = await client.PostAsJsonAsync("posts", forumPostRequest);
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadFromJsonAsync<ForumPostResponse>();
+            return result ?? new ForumPostResponse();
         }
     }
 }
