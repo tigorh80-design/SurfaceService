@@ -34,7 +34,20 @@ namespace BusinessLayer
             response.EnsureSuccessStatusCode();
             var forumPosts = await response.Content.ReadFromJsonAsync<List<ForumPostResponse>>();
 
+            return forumPosts ?? new List<ForumPostResponse>();
+        }
+
+        public async Task<List<ForumPostResponse>> GetForumPostsDBByUserAsync(int userId)
+        {
             var postsFromDb = await _postRepository.GetByUserAsync(userId);
+
+            var forumPosts = postsFromDb.ConvertAll(p => new ForumPostResponse
+            {
+                UserId = p.UserId,
+                Id = p.Id,
+                Title = p.Title,
+                Body = p.Body
+            });
 
             return forumPosts ?? new List<ForumPostResponse>();
         }

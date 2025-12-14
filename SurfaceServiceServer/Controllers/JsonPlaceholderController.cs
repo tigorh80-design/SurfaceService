@@ -42,6 +42,19 @@ namespace SurfaceServiceServer.Controllers
         }
 
         /// <summary>
+        /// Get forum posts by user id - DB
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("forumPostsDB/users/{userId}")]
+        public async Task<List<ForumPostResponse>> GetForumPostsDBByUserAsync(int userId)
+        {
+            var forumPosts = await _forumPostService.GetForumPostsDBByUserAsync(userId);
+
+            return forumPosts;
+        }
+
+        /// <summary>
         /// Create a new forum post
         /// </summary>
         /// <param name="forumPostRequest"></param>
