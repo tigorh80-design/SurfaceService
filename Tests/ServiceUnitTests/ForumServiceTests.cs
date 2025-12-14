@@ -49,7 +49,7 @@ namespace Tests.ServiceUnitTests
             var factoryMock = new Mock<IHttpClientFactory>();
             factoryMock.Setup(f => f.CreateClient("JSONPlaceholder")).Returns(httpClient);
 
-            var service = new ForumPostService(factoryMock.Object);
+            var service = new ForumPostService(factoryMock.Object, null);
 
             // Act
             var result = await service.GetForumPostsByUserAsync(userId);
@@ -103,7 +103,7 @@ namespace Tests.ServiceUnitTests
             var factoryMock = new Mock<IHttpClientFactory>();
             factoryMock.Setup(f => f.CreateClient("JSONPlaceholder")).Returns(httpClient);
 
-            var service = new ForumPostService(factoryMock.Object);
+            var service = new ForumPostService(factoryMock.Object, null);
 
             // Act & Assert
             await Assert.ThrowsAsync<HttpRequestException>(() => service.GetForumPostsByUserAsync(userId));
@@ -152,7 +152,7 @@ namespace Tests.ServiceUnitTests
             var factoryMock = new Mock<IHttpClientFactory>();
             factoryMock.Setup(f => f.CreateClient("JSONPlaceholder")).Returns(httpClient);
 
-            var service = new ForumPostService(factoryMock.Object);
+            var service = new ForumPostService(factoryMock.Object, null);
 
             // Act
             var result = await service.CreateForumPostAsync(requestPayload);
@@ -209,7 +209,7 @@ namespace Tests.ServiceUnitTests
             var factoryMock = new Mock<IHttpClientFactory>();
             factoryMock.Setup(f => f.CreateClient("JSONPlaceholder")).Returns(httpClient);
 
-            var service = new ForumPostService(factoryMock.Object);
+            var service = new ForumPostService(factoryMock.Object, null);
 
             // Act & Assert
             await Assert.ThrowsAsync<HttpRequestException>(() => service.CreateForumPostAsync(requestPayload));
