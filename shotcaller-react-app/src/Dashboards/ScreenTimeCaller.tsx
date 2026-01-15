@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function DrinkDashboard() {
+export default function ScreenTimeCaller() {
   const [tequilaValue, setTequilaValue] = useState(0);
   const [vodkaValue, setVodkaValue] = useState(0);
   const [beersValue, setBeersValue] = useState(0);
@@ -35,7 +35,7 @@ export default function DrinkDashboard() {
 
   return (
     <div>
-      <h1>Drink Dashboard</h1>
+      <h1>Screen Time Caller Dashboard</h1>
       {/* Tequila slider */}
       <div style={{ marginTop: "20px" }}>
         <label style={{ display: "block", marginBottom: "10px" }}>

@@ -10,9 +10,12 @@ export default function MainLayout() {
         padding: "20px",
         borderRight: "1px solid #ddd"
       }}>
-        <h3>Shot Caller</h3>
+        <h3>Trackers</h3>
         <ul style={{ listStyle: "none", padding: 0 }}>
-          <li><Link to="/drinkdashboard">Drink Dashboard</Link></li>
+          <li><Link to="/shotcaller">Shot Caller</Link></li>
+          <li><Link to="/medicinecaller">Medicine Caller</Link></li>
+          <li><Link to="/mealscaller">Meals Caller</Link></li>
+          <li><Link to="/screentimecaller">Screen Time Caller</Link></li>
           <li><Link to="/dataStats">Data Stats</Link></li>
           {/*<li><Link to="/reports">Reports</Link></li>*/}
         </ul>
