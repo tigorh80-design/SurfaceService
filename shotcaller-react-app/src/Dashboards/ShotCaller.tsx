@@ -4,6 +4,7 @@ export default function ShotCaller() {
   const [tequilaValue, setTequilaValue] = useState(0);
   const [vodkaValue, setVodkaValue] = useState(0);
   const [beersValue, setBeersValue] = useState(0);
+  const [name, setName] = useState("");
 
   let tequilaHue; 
   let vodkaHue; 
@@ -32,6 +33,19 @@ export default function ShotCaller() {
   else { 
     beersHue = 60 - (beersValue - 5) * 12; // yellow → red }
   }
+
+  function submitData() 
+  { fetch("https://localhost:44375/ShotCallerController/createShotCallerRecord", 
+    { method: "POST", 
+      headers: { "Content-Type": "application/json" }, 
+      body: JSON.stringify({ 
+        tequila: tequilaValue, 
+        vodka: vodkaValue, 
+        beers: beersValue,
+        name: name 
+      }) 
+    });
+   }
 
   return (
     <div>
@@ -109,6 +123,12 @@ export default function ShotCaller() {
             transition: "background-color 0.2s ease"
           }} 
         />
+      </div>
+      <br />
+      <div>
+        Name <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <br /><br />
+        <input type="button" value="Submit Data" onClick={submitData}/>
       </div>
 
     </div>

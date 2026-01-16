@@ -6,6 +6,7 @@ namespace RepositoryLayer.EF
         public RepoDbContext(DbContextOptions<RepoDbContext> options) : base(options) { }
 
         public DbSet<ForumPostEntity> ForumPosts { get; set; } = null!;
+        public DbSet<ShotCallerEntity> ShotCaller { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,6 +19,16 @@ namespace RepositoryLayer.EF
                 b.Property(x => x.Title).HasMaxLength(250).IsRequired();
                 b.Property(x => x.Body).IsRequired();
                 b.Property(x => x.UserId).IsRequired();
+            });
+
+            modelBuilder.Entity<ShotCallerEntity>(b =>
+            {
+                b.ToTable("ShotCaller");
+                b.HasKey(x => x.Id);
+                b.Property(x => x.Name).HasMaxLength(250).IsRequired();
+                b.Property(x => x.Tequila).IsRequired();
+                b.Property(x => x.Vodka).IsRequired();
+                b.Property(x => x.Beers).IsRequired();
             });
         }
     }
