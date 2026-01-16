@@ -67,8 +67,12 @@ export default function ShotCaller() {
   }
 
   return (
-    <div>
-      <h1>Shot Caller Dashboard</h1>
+  <>
+  <h1>Shot Caller Dashboard</h1>
+  <div style={{ display: "flex", gap: "40px" }}>
+  {/* LEFT COLUMN — Sliders */}
+  <div style={{ width: "70%" }}>
+    <h2>Input Your Drink Choices</h2>
       {/* Tequila slider */}
       <div style={{ marginTop: "20px" }}>
         <label style={{ display: "block", marginBottom: "10px" }}>
@@ -143,6 +147,7 @@ export default function ShotCaller() {
           }} 
         />
       </div>
+  
       <br />
       <div>
         Name <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -151,7 +156,15 @@ export default function ShotCaller() {
         {status && <div style={{ color: "green" }}>{status}</div>} 
         {error && <div style={{ color: "red" }}>{error}</div>}
       </div>
-
     </div>
+    {/* RIGHT COLUMN — DataGrid */}
+    <div style={{ width: "50%" }}>
+      <h2>Submitted Data</h2>
+
+      {/* Your DataGrid goes here */}
+      {/* <DataGrid rows={rows} columns={columns} /> */}
+    </div>
+    </div>
+    </>
   );
 }
