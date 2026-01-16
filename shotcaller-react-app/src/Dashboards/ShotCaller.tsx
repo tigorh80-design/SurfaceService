@@ -5,6 +5,8 @@ export default function ShotCaller() {
   const [vodkaValue, setVodkaValue] = useState(0);
   const [beersValue, setBeersValue] = useState(0);
   const [name, setName] = useState("");
+  const [status, setStatus] = useState(""); 
+  const [error, setError] = useState("");
 
   let tequilaHue; 
   let vodkaHue; 
@@ -34,18 +36,35 @@ export default function ShotCaller() {
     beersHue = 60 - (beersValue - 5) * 12; // yellow → red }
   }
 
-  function submitData() 
-  { fetch("https://localhost:44375/ShotCallerController/createShotCallerRecord", 
-    { method: "POST", 
-      headers: { "Content-Type": "application/json" }, 
-      body: JSON.stringify({ 
-        tequila: tequilaValue, 
-        vodka: vodkaValue, 
-        beers: beersValue,
-        name: name 
-      }) 
-    });
-   }
+  async function submitData() 
+  { 
+    setStatus(""); 
+    setError("");
+    
+      try {
+            const response = await fetch("https://localhost:44375/ShotCallerController/createShotCallerRecord", 
+                { method: "POST", 
+                  headers: { "Content-Type": "application/json" }, 
+                  body: JSON.stringify({ 
+                    tequila: tequilaValue, 
+                    vodka: vodkaValue, 
+                    beers: beersValue,
+                    name: name 
+                  }) 
+          });
+
+          if (!response.ok) 
+          { 
+            throw new Error("API returned an error");
+          }
+
+        setStatus("Record saved successfully!");
+    }
+    catch (err)
+    {
+      setError("Failed to save record.");
+    }
+  }
 
   return (
     <div>
@@ -129,6 +148,8 @@ export default function ShotCaller() {
         Name <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         <br /><br />
         <input type="button" value="Submit Data" onClick={submitData}/>
+        {status && <div style={{ color: "green" }}>{status}</div>} 
+        {error && <div style={{ color: "red" }}>{error}</div>}
       </div>
 
     </div>
