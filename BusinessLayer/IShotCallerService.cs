@@ -1,11 +1,10 @@
-﻿
-using Shared.ForumPosts;
-using Shared.ShotCaller;
+﻿using Shared.ShotCaller;
 
 namespace BusinessLayer
 {
     public interface IShotCallerService
     {
         Task CreateShotCallerRecordAsync(ShotCallerRequest shotCallerRequest);
+        Task<List<ShotCallerResponse>> GetAllShotCallerRecordsAsync();
     }
 }

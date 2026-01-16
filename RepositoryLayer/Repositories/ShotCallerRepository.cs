@@ -41,5 +41,8 @@ namespace RepositoryLayer.Repositories
         
             return entity;
         }
+
+        public async Task<List<ShotCallerEntity>> GetAllAsync() =>
+           await _ctx.ShotCaller.AsNoTracking().ToListAsync();
     }
 }

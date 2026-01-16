@@ -18,5 +18,19 @@ namespace BusinessLayer
         {
             await _shotCallerRepository.AddAsync(shotCallerRequest);
         }
+
+        public async Task<List<ShotCallerResponse>> GetAllShotCallerRecordsAsync()
+        { 
+            var shotCallerRecords = await _shotCallerRepository.GetAllAsync();
+            return shotCallerRecords.Select(entity => new ShotCallerResponse
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Tequila = entity.Tequila,
+                Vodka = entity.Vodka,
+                Beers = entity.Beers,
+                CreatedDate = entity.CreatedDate
+            }).ToList();
+        }
     }
 }

@@ -1,5 +1,6 @@
 using BusinessLayer;
 using Microsoft.AspNetCore.Mvc;
+using Shared.ForumPosts;
 using Shared.ShotCaller;
 
 namespace SurfaceServiceServer.Controllers
@@ -34,6 +35,19 @@ namespace SurfaceServiceServer.Controllers
                 _logger.LogError(ex, "Error in CreateShotCallerRecordAsync");
                 throw;
             }
+        }
+
+        /// <summary>
+        /// Get all shotcaller records
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet("shotcallers")]
+        public async Task<List<ShotCallerResponse>> GetAllShotCallerRecordsAsync()
+        {
+            var forumPosts = await _shotCallerService.GetAllShotCallerRecordsAsync();
+
+            return forumPosts;
         }
 
     }

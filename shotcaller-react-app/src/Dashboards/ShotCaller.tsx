@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DataGrid } from "@mui/x-data-grid";
 
 export default function ShotCaller() {
   const [tequilaValue, setTequilaValue] = useState(0);
@@ -12,6 +13,20 @@ export default function ShotCaller() {
   let vodkaHue; 
   let beersHue; 
   
+const columns = [
+  { field: "id", headerName: "ID", width: 70 },
+  { field: "name", headerName: "Name", width: 150 },
+  { field: "tequila", headerName: "Tequila", width: 150 },
+  { field: "vodka", headerName: "Vodka", width: 150 },
+  { field: "beers", headerName: "Beers", width: 150 }
+];
+
+const rows = [
+  { id: 1, name: "Igor" },
+  { id: 2, name: "John" },
+];
+
+
   if (tequilaValue <= 5) 
   { 
     tequilaHue = 120 - tequilaValue * 12; // green → yellow } 
@@ -71,7 +86,7 @@ export default function ShotCaller() {
   <h1>Shot Caller Dashboard</h1>
   <div style={{ display: "flex", gap: "40px" }}>
   {/* LEFT COLUMN — Sliders */}
-  <div style={{ width: "70%" }}>
+  <div style={{ width: "30%" }}>
     <h2>Input Your Drink Choices</h2>
       {/* Tequila slider */}
       <div style={{ marginTop: "20px" }}>
@@ -158,11 +173,11 @@ export default function ShotCaller() {
       </div>
     </div>
     {/* RIGHT COLUMN — DataGrid */}
-    <div style={{ width: "50%" }}>
+    <div style={{ width: "70%" }}>
       <h2>Submitted Data</h2>
 
       {/* Your DataGrid goes here */}
-      {/* <DataGrid rows={rows} columns={columns} /> */}
+      <DataGrid rows={rows} columns={columns} />
     </div>
     </div>
     </>

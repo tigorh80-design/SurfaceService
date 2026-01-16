@@ -1,7 +1,6 @@
-﻿
-namespace RepositoryLayer.EF
+﻿namespace Shared.ShotCaller
 {
-    public class ShotCallerEntity
+    public class ShotCallerResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
